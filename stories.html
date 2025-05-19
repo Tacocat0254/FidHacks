@@ -81,12 +81,51 @@
       <div class="share-story">
         <h2>Share Your Story</h2>
         <p>Inspire others by sharing your journey. Your story could be the push someone needs to take their next step.</p>
-        <button class="primary-button">Share Your Story</button>
+        <button class="primary-button" id="share-story-btn">Share Your Story</button>
       </div>
     </section>
   </main>
   <footer>
-    &copy; 2025 Why Not Me? All rights reserved.
+    &copy; 2025 LaunchPad. All rights reserved.
   </footer>
+
+  <!-- Share Story Modal -->
+  <div id="share-story-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:2000; align-items:center; justify-content:center;">
+    <div style="background:#fff; padding:2rem; border-radius:12px; width:95%; max-width:600px; margin:auto; position:relative; box-shadow:0 4px 16px rgba(0,0,0,0.15);">
+      <h3>Share Your Story</h3>
+      <div class="form-group">
+        <label for="story-name">Name (optional)</label>
+        <input type="text" id="story-name" placeholder="Your name (optional)">
+      </div>
+      <div class="form-group">
+        <label for="story-position">Position (optional)</label>
+        <input type="text" id="story-position" placeholder="Your position (optional)">
+      </div>
+      <div class="form-group">
+        <label for="story-content">Your Story</label>
+        <textarea id="story-content" rows="6" placeholder="Share your journey..."></textarea>
+      </div>
+      <div class="form-group">
+        <label for="story-content">Your Story</label>
+        <textarea id="story-content" rows="6" placeholder="Share your journey..."></textarea>
+      </div>
+      <div style="display:flex; gap:1rem; justify-content:flex-end;">
+        <button type="button" id="cancel-story">Cancel</button>
+        <button type="button" id="submit-story">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Modal logic for Share Story
+    const storyModal = document.getElementById('share-story-modal');
+    document.getElementById('share-story-btn').onclick = () => { storyModal.style.display = 'flex'; };
+    document.getElementById('cancel-story').onclick = () => { storyModal.style.display = 'none'; };
+    document.getElementById('submit-story').onclick = () => {
+      // You can add logic here to handle the submitted story
+      storyModal.style.display = 'none';
+    };
+    storyModal.onclick = (e) => { if (e.target === storyModal) storyModal.style.display = 'none'; };
+  </script>
 </body>
 </html> 

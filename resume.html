@@ -57,6 +57,10 @@
                 <label for="phone">Phone</label>
                 <input type="tel" id="phone" required>
               </div>
+              <div class="form-group">
+                <label for="linkedin">LinkedIn</label>
+                <input type="link" id="link" required>
+              </div>
             </div>
 
             <div class="form-section">
@@ -92,5 +96,104 @@
   <footer>
     &copy; 2025 Why Not Me? All rights reserved.
   </footer>
+
+  <!-- Experience Modal -->
+  <div id="experience-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:2000; align-items:center; justify-content:center;">
+    <div style="background:#fff; padding:2rem; border-radius:12px; width:90%; max-width:1000px; margin:auto; position:relative; box-shadow:0 4px 16px rgba(0,0,0,0.15);">
+      <h3>Add Experience</h3>
+      <div class="form-group">
+        <label for="exp-title">Job Title</label>
+        <input type="text" id="exp-title">
+      </div>
+      <div class="form-group">
+        <label for="exp-company">Company</label>
+        <input type="text" id="exp-company">
+      </div>
+      <div class="form-group">
+        <label for="exp-years">Years</label>
+        <input type="text" id="exp-years" placeholder="e.g., 2019-2022">
+      </div>
+      <div class="form-group">
+        <label for="exp-desc">Description</label>
+        <textarea id="exp-desc" rows="3"></textarea>
+      </div>
+      <div style="display:flex; gap:1rem; justify-content:flex-end;">
+        <button type="button" id="cancel-exp">Cancel</button>
+        <button type="button" id="save-exp">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Education Modal -->
+  <div id="education-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:2000; align-items:center; justify-content:center;">
+    <div style="background:#fff; padding:2rem; border-radius:12px; width:90%; max-width:1000px; margin:auto; position:relative; box-shadow:0 4px 16px rgba(0,0,0,0.15);">
+      <h3>Add Education</h3>
+      <div class="form-group">
+        <label for="edu-school">School/Institution</label>
+        <input type="text" id="edu-school">
+      </div>
+      <div class="form-group">
+        <label for="edu-location">Location of School/Institution</label>
+        <input type="text" id="edu-location" placeholder="e.g., Dallas, TX">
+      </div>
+      <div class="form-group">
+        <label for="edu-degree">Degree</label>
+        <select id="edu-degree">
+          <option value="high-school">High School</option>
+          <option value="aa">Associate of Arts (AA)</option>
+          <option value="as">Associate of Science (AS)</option>
+          <option value="bs">Bachelor of Science (BS)</option>
+          <option value="bsa">Bachelor of Science in Arts (BSA)</option>
+          <option value="ba">Bachelor of Arts (BA)</option>
+          <option value="ms">Master of Science (MS)</option>
+          <option value="ma">Master of Arts (MA)</option>
+          <option value="phd">PhD</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="edu-major">Major</label>
+        <input type="text" id="edu-major" placeholder="e.g., Finance, Computer Science, etc.">
+      </div>
+      <div class="form-group">
+        <label for="edu-years">Years</label>
+        <input type="text" id="edu-years" placeholder="e.g., Aug 2018 - May 2022">
+      </div>
+      <div class="form-group">
+        <label for="edu-gpa">GPA</label>
+        <input type="text" id="edu-gpa" placeholder="3.25">
+      </div>
+      <div class="form-group">
+        <label for="edu-desc">Description</label>
+        <textarea id="edu-desc" rows="3"></textarea>
+      </div>
+      <div style="display:flex; gap:1rem; justify-content:flex-end;">
+        <button type="button" id="cancel-edu">Cancel</button>
+        <button type="button" id="save-edu">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Modal logic for experience
+    const modal = document.getElementById('experience-modal');
+    document.getElementById('add-experience').onclick = () => { modal.style.display = 'flex'; };
+    document.getElementById('cancel-exp').onclick = () => { modal.style.display = 'none'; };
+    document.getElementById('save-exp').onclick = () => {
+      // You can add logic here to save the experience entry
+      modal.style.display = 'none';
+    };
+    modal.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+
+    // Modal logic for education
+    const eduModal = document.getElementById('education-modal');
+    document.getElementById('add-education').onclick = () => { eduModal.style.display = 'flex'; };
+    document.getElementById('cancel-edu').onclick = () => { eduModal.style.display = 'none'; };
+    document.getElementById('save-edu').onclick = () => {
+      // You can add logic here to save the education entry
+      eduModal.style.display = 'none';
+    };
+    eduModal.onclick = (e) => { if (e.target === eduModal) eduModal.style.display = 'none'; };
+  </script>
 </body>
 </html> 
