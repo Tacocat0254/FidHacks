@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LaunchPad: Ready Anyway</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="calculator.html">Confidence Calculator</a>
+    <a href="resume.html">Resume Builder</a>
+    <a href="hiring.html">Hiring Process</a>
+    <a href="stories.html">Story Hub</a>
+    <a href="challenge.html">#ApplyAnyway</a>
+  </nav>
+
+  <header>
+    <h1>Why Not Me?</h1>
+    <p>You don’t need to be 100% ready to be 100% right for it. </p>
+    <p>Your one stop shop for all your job application needs.</p>
+    <a href="#features" class="scroll-down">Explore Tools</a>
+  </header>
+
+  <main id="features">
+    <section class="feature">
+      <h2>Get Started</h2>
+      <div class="feature-grid">
+        <a href="calculator.html" class="feature-card">
+          <h3>Confidence Calculator</h3>
+          <p>Discover how much you're really ready — and why you should apply anyway.</p>
+        </a>
+        
+        <a href="resume.html" class="feature-card">
+          <h3>Resume Builder</h3>
+          <p>Create a powerful resume that highlights your strengths and potential.</p>
+        </a>
+        
+        <a href="hiring.html" class="feature-card">
+          <h3>Hiring Process Guide</h3>
+          <p>Learn what to expect and how to navigate each stage of the hiring process.</p>
+        </a>
+        
+        <a href="stories.html" class="feature-card">
+          <h3>Success Stories</h3>
+          <p>Read inspiring stories from women who took the leap.</p>
+        </a>
+        
+        <a href="challenge.html" class="feature-card">
+          <h3>#ApplyAnyway Challenge</h3>
+          <p>Join the movement and share your journey.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 LaunchPad. All rights reserved.
+  </footer>
+
+  <script>
+    // Smooth scroll for the "Explore Tools" link
+    document.querySelector('.scroll-down').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('#features').scrollIntoView({ 
+        behavior: 'smooth' 
+      });
+    });
+  </script>
+</body>
+</html> 

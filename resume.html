@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Builder - LaunchPad</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="calculator.html">Confidence Calculator</a>
+    <a href="resume.html">Resume Builder</a>
+    <a href="hiring.html">Hiring Process</a>
+    <a href="stories.html">Story Hub</a>
+    <a href="challenge.html">#ApplyAnyway</a>
+  </nav>
+  <main>
+    <section class="feature">
+      <h1>Resume Builder</h1>
+      <p>Create a powerful resume that highlights your strengths and potential.</p>
+      
+      <div class="resume-builder">
+        <div class="resume-templates">
+          <h2>Choose a Template</h2>
+          <div class="template-grid">
+            <div class="template-card">
+              <img src="templates/modern.png" alt="Modern Template">
+              <button>Use Modern</button>
+            </div>
+            <div class="template-card">
+              <img src="templates/professional.png" alt="Professional Template">
+              <button>Use Professional</button>
+            </div>
+            <div class="template-card">
+              <img src="templates/creative.png" alt="Creative Template">
+              <button>Use Creative</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="resume-editor">
+          <form id="resume-form">
+            <div class="form-section">
+              <h3>Personal Information</h3>
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" required>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Experience</h3>
+              <div id="experience-entries">
+                <!-- Experience entries will be added here dynamically -->
+              </div>
+              <button type="button" id="add-experience">Add Experience</button>
+            </div>
+
+            <div class="form-section">
+              <h3>Education</h3>
+              <div id="education-entries">
+                <!-- Education entries will be added here dynamically -->
+              </div>
+              <button type="button" id="add-education">Add Education</button>
+            </div>
+
+            <div class="form-section">
+              <h3>Skills</h3>
+              <div class="form-group">
+                <label for="skills">Skills (comma separated)</label>
+                <input type="text" id="skills" placeholder="e.g., Project Management, Python, Data Analysis">
+              </div>
+            </div>
+
+            <button type="submit" class="primary-button">Generate Resume</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 LaunchPad. All rights reserved.
+  </footer>
+</body>
+</html> 
