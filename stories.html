@@ -99,11 +99,11 @@
       </div>
       <div class="form-group">
         <label for="story-position">Position (optional)</label>
-        <input type="text" id="story-position" placeholder="Your position (optional)">
+        <input type="text" id="story-position" placeholder="e.g.Software Engineer">
       </div>
       <div class="form-group">
-        <label for="story-content">Your Story</label>
-        <textarea id="story-content" rows="6" placeholder="Share your journey..."></textarea>
+        <label for="story-location">Location (optional)</label>
+        <input type="text" id="story-location" placeholder="e.g. Dallas, TX">
       </div>
       <div class="form-group">
         <label for="story-content">Your Story</label>
@@ -116,14 +116,22 @@
     </div>
   </div>
 
+  <!-- Thank You Popup -->
+  <div id="thank-you-popup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.2); z-index:3000; align-items:center; justify-content:center;">
+    <div style="background:#fff; padding:2rem 3rem; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.15); font-size:1.5rem; color:#5a67d8; font-weight:600;">Thank you for sharing your story!</div>
+  </div>
+
   <script>
     // Modal logic for Share Story
     const storyModal = document.getElementById('share-story-modal');
+    const thankYouPopup = document.getElementById('thank-you-popup');
     document.getElementById('share-story-btn').onclick = () => { storyModal.style.display = 'flex'; };
     document.getElementById('cancel-story').onclick = () => { storyModal.style.display = 'none'; };
     document.getElementById('submit-story').onclick = () => {
       // You can add logic here to handle the submitted story
       storyModal.style.display = 'none';
+      thankYouPopup.style.display = 'flex';
+      setTimeout(() => { thankYouPopup.style.display = 'none'; }, 2000);
     };
     storyModal.onclick = (e) => { if (e.target === storyModal) storyModal.style.display = 'none'; };
   </script>

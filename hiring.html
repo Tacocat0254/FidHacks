@@ -85,17 +85,17 @@
           <div class="resource-card">
             <h3>Interview Prep</h3>
             <p>Practice common interview questions and scenarios.</p>
-            <button>Start Practicing</button>
+            <button class="primary-button" id="start-practicing-btn">Start Practicing</button>
           </div>
           <div class="resource-card">
             <h3>Salary Research</h3>
             <p>Research market rates for your role and location.</p>
-            <button>View Data</button>
+            <button class="primary-button" id="salary-research-btn">View Data</button>
           </div>
           <div class="resource-card">
             <h3>Company Research</h3>
             <p>Learn about companies before your interviews.</p>
-            <button>Research Tools</button>
+            <button class="primary-button" id="company-research-btn">Company Research</a>
           </div>
         </div>
       </div>
@@ -104,5 +104,29 @@
   <footer>
     &copy; 2025 Why Not Me? All rights reserved.
   </footer>
+  <script>
+    const startBtn = document.getElementById('start-practicing-btn');
+    if (startBtn) {
+      startBtn.onclick = () => {
+        window.location.href = 'interview-prep.html';
+      };
+    }
+  </script>
+  <script>
+    const resourceBtn = document.getElementById('salary-research-btn');
+    if (resourceBtn) {
+      resourceBtn.onclick = () => {
+        window.location.href = 'salary-research.html';
+      };
+    }
+  </script>
+  <script>
+    const comparny = document.getElementById('company-research-btn');
+    if (comparny) {
+      comparny.onclick = () => {
+        window.location.href = 'company-research.html';
+      };
+    }
+  </script>
 </body>
 </html> 

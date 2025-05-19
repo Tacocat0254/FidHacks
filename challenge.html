@@ -41,7 +41,7 @@
         <div class="challenge-cta">
           <h2>Take the Challenge</h2>
           <p>Commit to applying to at least one role you don't feel 100% ready for. We'll support you every step of the way.</p>
-          <button class="primary-button">Join the Challenge</button>
+          <button class="primary-button" id="scroll-to-form-btn">Join the Challenge</button>
         </div>
       </div>
 
@@ -115,13 +115,40 @@
             <textarea id="goal" rows="3" placeholder="Share what you're hoping to achieve..."></textarea>
           </div>
           
-          <button type="submit" class="primary-button">Join #ApplyAnyway</button>
+          <button type="submit" class="primary-button" id="join-applyanyway-btn">Join #ApplyAnyway</button>
         </form>
       </div>
     </section>
   </main>
   <footer>
-    &copy; 2025 Why Not Me? All rights reserved.
+    &copy; 2025 LaunchPad. All rights reserved.
   </footer>
+
+  <!-- Thank You Popup -->
+  <div id="thank-you-popup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.2); z-index:3000; align-items:center; justify-content:center;">
+    <div style="background:#fff; padding:2rem 3rem; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.15); font-size:1.5rem; color:#5a67d8; font-weight:600;">Thank you for joining #ApplyAnyway!</div>
+  </div>
+
+  <script>
+    // Thank you popup logic for Join #ApplyAnyway
+    const joinBtn = document.getElementById('join-applyanyway-btn');
+    const thankYouPopup = document.getElementById('thank-you-popup');
+    if (joinBtn) {
+      joinBtn.onclick = (e) => {
+        e.preventDefault();
+        thankYouPopup.style.display = 'flex';
+        setTimeout(() => { thankYouPopup.style.display = 'none'; }, 2000);
+      };
+    }
+
+    // Scroll to challenge form when 'Join the Challenge' is pressed
+    const scrollBtn = document.getElementById('scroll-to-form-btn');
+    if (scrollBtn) {
+      scrollBtn.onclick = (e) => {
+        e.preventDefault();
+        document.querySelector('.challenge-form').scrollIntoView({ behavior: 'smooth' });
+      };
+    }
+  </script>
 </body>
 </html> 
