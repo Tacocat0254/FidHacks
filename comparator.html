@@ -69,9 +69,33 @@
         </div>
         <div class="comparator-side comparator-link">
           <h2>Enter Job Application Link</h2>
-          <input type="url" placeholder="Paste the job application URL here" />
+          <textarea id="urlInput" placeholder="Paste Amazon job URL here..."></textarea>
+          <button onclick="fetchDescription()">Get Description</button>
         </div>
       </div>
+      <div id="description"></div>
+
+  <script>
+    async function fetchDescription() {
+      const url = document.getElementById('urlInput').value.trim()
+      const descriptionDiv = document.getElementById('description')
+      descriptionDiv.innerHTML = 'Loading...'
+
+      const response = await fetch('/scrape', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url })
+      })
+
+      const result = await response.json()
+
+      if (result.error) {
+        descriptionDiv.innerHTML = `<p style="color:red;">${result.error}</p>`
+      } else {
+        descriptionDiv.innerHTML = result.description
+      }
+    }
+  </script>
     </section>
   </main>
   <footer>
