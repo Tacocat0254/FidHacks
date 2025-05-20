@@ -3,14 +3,14 @@ body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background: #f9f9f9;
+  background: #ffffff;
   color: #333;
   min-height: 100vh;
 }
 
 header {
-  background-color: #5a67d8;
-  color: white;
+  background-color: rgb(251, 152, 195);
+  color: rgb(255, 255, 255);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -54,7 +54,7 @@ nav {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  background-color: rgba(67, 65, 144, 0.95);
+  background-color: rgba(70,145,16,255);
   padding: 1rem;
   z-index: 1000;
   backdrop-filter: blur(5px);
@@ -81,7 +81,7 @@ main {
 }
 
 .feature {
-  background: white;
+  background: rgb(255, 255, 255);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -90,7 +90,7 @@ main {
 }
 
 footer {
-  background: #e2e8f0;
+  background: rgb(253, 227, 238);
   text-align: center;
   padding: 1rem;
   font-size: 0.9rem;
@@ -123,7 +123,7 @@ footer {
 }
 
 button {
-  background-color: #5a67d8;
+  background-color: #ba0d6c;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -134,13 +134,13 @@ button {
 }
 
 button:hover {
-  background-color: #434190;
+  background-color: #ba0d6c;
 }
 
 .score-display {
   font-size: 3rem;
   font-weight: 800;
-  color: #5a67d8;
+  color: #ba0d6c;
   text-align: center;
   margin: 2rem 0;
 }
@@ -195,7 +195,7 @@ button:hover {
   margin-bottom: 2rem;
   background: #f8fafc;
   border-radius: 8px;
-  border-left: 4px solid #5a67d8;
+  border-left: 4px solid #ba0d6c;
 }
 
 .timeline-number {
@@ -204,7 +204,7 @@ button:hover {
   left: -15px;
   width: 40px;
   height: 40px;
-  background: #5a67d8;
+  background: #ba0d6c;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -215,7 +215,7 @@ button:hover {
 
 .timeline-item h3 {
   margin-top: 0;
-  color: #5a67d8;
+  color: #ba0d6c;
 }
 
 .timeline-item ul {
@@ -274,7 +274,7 @@ button:hover {
 
 .story-meta h3 {
   margin: 0;
-  color: #5a67d8;
+  color: #ba0d6c;
 }
 
 .story-role {
@@ -297,7 +297,7 @@ button:hover {
   gap: 1rem;
   margin-top: 1rem;
   font-size: 0.9rem;
-  color: #5a67d8;
+  color: #ba0d6c;
   font-weight: 600;
 }
 
@@ -333,7 +333,7 @@ button:hover {
   display: block;
   font-size: 2.5rem;
   font-weight: 800;
-  color: #5a67d8;
+  color: #ba0d6c;
   margin-bottom: 0.5rem;
 }
 
@@ -346,7 +346,7 @@ button:hover {
   max-width: 600px;
   margin: 3rem auto;
   padding: 2rem;
-  background: #5a67d8;
+  background: #ba0d6c;
   color: white;
   border-radius: 12px;
 }
@@ -357,7 +357,7 @@ button:hover {
 
 .challenge-cta .primary-button {
   background: white;
-  color: #5a67d8;
+  color: #ba0d6c;
 }
 
 .steps-grid {
@@ -382,7 +382,7 @@ button:hover {
   transform: translateX(-50%);
   width: 40px;
   height: 40px;
-  background: #5a67d8;
+  background: #ba0d6c;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -415,7 +415,7 @@ button:hover {
 .member-count {
   display: block;
   margin-top: 1rem;
-  color: #5a67d8;
+  color: #ba0d6c;
   font-weight: 600;
 }
 
@@ -462,7 +462,7 @@ button:hover {
 }
 
 .feature-card h3 {
-  color: #5a67d8;
+  color: #ba0d6c;
   margin-top: 0;
   margin-bottom: 1rem;
 }
@@ -529,7 +529,7 @@ button:hover {
   margin-top: 2rem;
   padding: 1rem 2rem;
   background: white;
-  color: #5a67d8;
+  color: #ba0d6c;
   text-decoration: none;
   border-radius: 30px;
   font-weight: 600;
