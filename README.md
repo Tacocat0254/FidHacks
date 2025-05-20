@@ -44,68 +44,6 @@ WhyNotMe/
 ├── README.md
 └── demo-link.txt
 
-### DataFlow:
-
-1. User Interacts with Web App (Frontend)
-Tools: HTML + CSS + JavaScript
-Actions:
-
-Enters data into forms (Resume Builder, Confidence Calculator)
-
-Clicks buttons or submits inputs
-
-Views resources and stories
-
-↓
-
-2. JavaScript Processes Input
-Role: Validates data, formats it, handles UI updates
-Example:
-
-Confidence Calculator computes score from selected inputs
-
-Resume Builder gathers and packages form data
-
-↓
-
-3. Data Sent to Java Backend (API Request)
-Method: fetch() or XMLHttpRequest using POST or GET
-Content: JSON payload (e.g., {name: "Sara", experience: "2 years"})
-
-↓
-
-4. Java Backend Receives & Processes
-Tech: Java Servlet / Spring Boot Controller
-Actions:
-
-Validates the data
-
-Performs logic (e.g., scoring, keyword extraction)
-
-Saves to a database (if needed)
-
-Returns response (e.g., success message, formatted resume)
-
-↓
-
-5. Response Sent Back to Frontend
-Type: JSON or HTML snippet
-Use:
-
-Display confidence score
-
-Show generated resume
-
-Confirm submission to Story Hub
-
-↓
-
-6. User Views Final Output
-Personalized feedback
-
-Downloadable resume
-
-Shared success stories
 
 
 ### Features:
