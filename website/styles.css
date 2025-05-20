@@ -54,7 +54,7 @@ nav {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  background-color: rgba(70,145,16,255);
+  background-color: #ed5aab;
   padding: 1rem;
   z-index: 1000;
   backdrop-filter: blur(5px);

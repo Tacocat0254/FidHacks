@@ -6,6 +6,8 @@
   <title>Resume Builder - LaunchPad</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
   <nav>
@@ -19,6 +21,7 @@
   </nav>
   <main>
     <section class="feature">
+      <div id="selected-template" style="display:none; margin-bottom:1.5rem; font-size:1.2rem; font-weight:600; color:#ba0d6c; text-align:center;"></div>
       <h1>Resume Builder</h1>
       <p>Create a powerful resume that highlights your strengths and potential.</p>
       
@@ -87,6 +90,7 @@
               </div>
             </div>
 
+            <div id="selected-template" style="display:none; margin:1.5rem 0; font-size:1.2rem; font-weight:600; color:#ba0d6c; text-align:center;"></div>
             <button type="submit" class="primary-button">Generate Resume</button>
           </form>
         </div>
@@ -181,6 +185,9 @@
     </div>
   </div>
 
+  <!-- Hidden Resume Preview for PDF Generation -->
+  <div id="pdf-resume" style="display:none; padding:2rem; background:#fff; color:#222; min-width:600px; max-width:800px; margin:auto;"></div>
+
   <script>
     // Modal logic for experience
     const modal = document.getElementById('experience-modal');
@@ -217,10 +224,100 @@
     document.getElementById('add-education').onclick = () => { eduModal.style.display = 'flex'; };
     document.getElementById('cancel-edu').onclick = () => { eduModal.style.display = 'none'; };
     document.getElementById('save-edu').onclick = () => {
-      // You can add logic here to save the education entry
-      eduModal.style.display = 'none';
+      // Save the education entry
+      const school = document.getElementById('edu-school').value;
+      const location = document.getElementById('edu-location').value;
+      const degree = document.getElementById('edu-degree').value;
+      const major = document.getElementById('edu-major').value;
+      const years = document.getElementById('edu-years').value;
+      const gpa = document.getElementById('edu-gpa').value;
+      const desc = document.getElementById('edu-desc').value;
+      if (school && degree && years) {
+        const entry = document.createElement('div');
+        entry.className = 'edu-entry';
+        entry.style.marginBottom = '1rem';
+        entry.innerHTML = `<strong>${degree}</strong> in <strong>${major}</strong> at <strong>${school}</strong> (${years})<br><span>${location ? location + ', ' : ''}${gpa ? 'GPA: ' + gpa + ', ' : ''}${desc}</span>`;
+        document.getElementById('education-entries').appendChild(entry);
+        // Show saved popup
+        const savedPopup = document.getElementById('exp-saved-popup');
+        savedPopup.style.display = 'flex';
+        setTimeout(() => { savedPopup.style.display = 'none'; }, 2000);
+        // Clear modal fields
+        document.getElementById('edu-school').value = '';
+        document.getElementById('edu-location').value = '';
+        document.getElementById('edu-degree').value = '';
+        document.getElementById('edu-major').value = '';
+        document.getElementById('edu-years').value = '';
+        document.getElementById('edu-gpa').value = '';
+        document.getElementById('edu-desc').value = '';
+        eduModal.style.display = 'none';
+      }
     };
     eduModal.onclick = (e) => { if (e.target === eduModal) eduModal.style.display = 'none'; };
+
+    document.getElementById('resume-form').onsubmit = function(e) {
+      e.preventDefault();
+      // Gather all data
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const linkedin = document.getElementById('link') ? document.getElementById('link').value : '';
+      const skills = document.getElementById('skills').value;
+      const expEntries = Array.from(document.querySelectorAll('#experience-entries .exp-entry')).map(e => e.innerHTML);
+      const eduEntries = Array.from(document.querySelectorAll('#education-entries .edu-entry')).map(e => e.innerHTML);
+      const templateText = document.getElementById('selected-template').textContent || 'Modern Template';
+      let template = 'modern';
+      if (templateText.toLowerCase().includes('professional')) template = 'professional';
+      if (templateText.toLowerCase().includes('creative')) template = 'creative';
+
+      // Build resume HTML
+      let resumeHTML = `<div style="font-family:Inter,sans-serif;">
+        <div style="text-align:center; margin-bottom:1.5rem;">
+          <h1 style="margin:0; font-size:2.2rem; color:${template==='modern' ? '#ba0d6c' : template==='professional' ? '#222' : '#ba0d6c'};">${name || 'Your Name'}</h1>
+          <div style="font-size:1rem; color:#666;">${email || ''} ${phone ? ' | ' + phone : ''} ${linkedin ? ' | ' + linkedin : ''}</div>
+        </div>
+        <h2 style="border-bottom:2px solid ${template==='modern' ? '#ba0d6c' : template==='professional' ? '#222' : '#ba0d6c'}; font-size:1.2rem;">Experience</h2>
+        <div>${expEntries.length ? expEntries.map(e=>`<div style='margin-bottom:0.7rem;'>${e}</div>`).join('') : '<em>No experience added.</em>'}</div>
+        <h2 style="border-bottom:2px solid ${template==='modern' ? '#ba0d6c' : template==='professional' ? '#222' : '#ba0d6c'}; font-size:1.2rem;">Education</h2>
+        <div>${eduEntries.length ? eduEntries.map(e=>`<div style='margin-bottom:0.7rem;'>${e}</div>`).join('') : '<em>No education added.</em>'}</div>
+        <h2 style="border-bottom:2px solid ${template==='modern' ? '#ba0d6c' : template==='professional' ? '#222' : '#ba0d6c'}; font-size:1.2rem;">Skills</h2>
+        <div>${skills ? skills : '<em>No skills listed.</em>'}</div>
+      </div>`;
+      // Set and show hidden resume
+      const pdfResume = document.getElementById('pdf-resume');
+      pdfResume.innerHTML = resumeHTML;
+      pdfResume.style.display = 'block';
+      // Generate PDF
+      html2canvas(pdfResume, {scale:2}).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new window.jspdf.jsPDF({orientation:'portrait', unit:'pt', format:'a4'});
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        // Fit image to page width
+        const imgProps = pdf.getImageProperties(imgData);
+        const pdfWidth = pageWidth - 40;
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        pdf.addImage(imgData, 'PNG', 20, 20, pdfWidth, pdfHeight);
+        pdf.save(`${name ? name.replace(/\s+/g,'_') : 'resume'}.pdf`);
+        pdfResume.style.display = 'none';
+        // Clear the page after download
+        document.getElementById('resume-form').reset();
+        document.getElementById('experience-entries').innerHTML = '';
+        document.getElementById('education-entries').innerHTML = '';
+        document.getElementById('selected-template').style.display = 'none';
+      });
+    };
+
+    // Template selection logic
+    const templateSection = document.getElementById('selected-template');
+    const templateButtons = document.querySelectorAll('.template-card button');
+    templateButtons.forEach(btn => {
+      btn.onclick = function() {
+        const templateName = btn.textContent.replace('Use ', '').replace('Template', '').trim() + ' Template';
+        templateSection.textContent = 'Using: ' + templateName;
+        templateSection.style.display = 'block';
+      };
+    });
   </script>
 </body>
 </html> 
