@@ -2,7 +2,7 @@
 
 //include demo link// 
 
-A one stop for all application needs.
+"Every expert was once a beginner who dared to ask, 'Why not me?'"
   
 this demo website includes a launchpad with different resources such as a
 confidence calculator, Resume Builder, HireLens, Hiring process, Story Hub and
