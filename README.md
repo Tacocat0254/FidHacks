@@ -23,32 +23,6 @@ Increase confidence → job applications → retention
 Build supportive tech community
 Data-driven progress tracking for actual growth
 
-### Architecture:
-
-WhyNotMe/
-
-
-├── frontend/
-│   ├── index.html
-│   ├── css/
-│   │   └── style.css
-│   ├── js/
-│   │   └── main.js
-│   └── images/
-│       └── logo.png
-├── backend/
-│   └── src/
-│       └── com.whynotme/
-│           ├── Confidence Calculator.html
-│           ├── Resume Builder.html
-│           └── Hirelens.html
-            ├── hiring process.html
-            ├── Storyhub.html
-├── README.md
-└── demo-link.txt
-
-
-
 ### Features:
 - Confidence calculator to discover how much the user is ready.
 - Resume builder to create a resume with templates to choose from with user input to
