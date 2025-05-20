@@ -22,7 +22,7 @@
       <h1>Confidence Calculator</h1>
       <p>Discover how much you're really ready — and why you should apply anyway.</p>
       <blockquote>
-        “Don’t wait for someone to open the door. Kick it down and build your own path.”
+        "Don't wait for someone to open the door. Kick it down and build your own path."
         - Women in Tech Movement
       </blockquote>
       
@@ -144,15 +144,56 @@
     const calcForm = document.getElementById('confidence-form');
     const calcPopup = document.getElementById('calc-popup');
     const closeCalcPopup = document.getElementById('close-calc-popup');
+    const popupMsg = calcPopup.querySelector('div');
     if (calcForm) {
       calcForm.onsubmit = function(e) {
         e.preventDefault();
+        // Calculate score
+        let score = 0;
+        // 4 questions, 10% each
+        const skills = calcForm.querySelector('input[name="skills"]:checked');
+        const learning = calcForm.querySelector('input[name="learning"]:checked');
+        const support = calcForm.querySelector('input[name="support"]:checked');
+        const belief = calcForm.querySelector('input[name="belief"]:checked');
+        if (skills && skills.value === 'yes') score += 10;
+        if (learning && learning.value === 'yes') score += 10;
+        if (support && support.value === 'yes') score += 10;
+        if (belief && belief.value === 'yes') score += 10;
+        // Years of experience (0-5+ years, up to 30%)
+        const expInput = document.getElementById('experience');
+        let years = 0;
+        if (expInput && expInput.value) {
+          years = parseFloat(expInput.value);
+          if (!isNaN(years)) {
+            score += Math.min(30, (years / 5) * 30); // 0 years = 0%, 5+ years = 30%
+          }
+        }
+        // Education (up to 30%)
+        const eduInput = document.getElementById('education');
+        let eduScore = 0;
+        if (eduInput) {
+          switch (eduInput.value) {
+            case 'high-school': eduScore = 5; break;
+            case 'some-college': eduScore = 10; break;
+            case 'bachelors': eduScore = 20; break;
+            case 'masters': eduScore = 25; break;
+            case 'phd': eduScore = 30; break;
+            default: eduScore = 0;
+          }
+          score += eduScore;
+        }
+        score = Math.round(Math.min(score, 100));
+        let feedback = '';
+        if (score === 100) feedback = "🎉 You're fully confident and ready to go!";
+        else if (score >= 75) feedback = "✅ You're almost there — just a little more support or learning!";
+        else if (score >= 50) feedback = "🌱 You're on your way! Keep learning and believing in yourself.";
+        else feedback = "💡 Start small, find support, and grow — you've got this!";
+        popupMsg.innerHTML = `Your Confidence Score: <b>${score}%</b><br><br>${feedback}<br><br><button id='close-calc-popup' class='primary-button'>Close</button>`;
         calcPopup.style.display = 'flex';
-      };
-    }
-    if (closeCalcPopup) {
-      closeCalcPopup.onclick = function() {
-        calcPopup.style.display = 'none';
+        // Re-attach close event
+        document.getElementById('close-calc-popup').onclick = function() {
+          calcPopup.style.display = 'none';
+        };
       };
     }
     // Optional: close popup when clicking outside
