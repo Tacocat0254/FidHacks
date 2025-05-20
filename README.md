@@ -38,11 +38,17 @@ The WhyNotMe platform was designed to empower students and aspiring professional
 ### FutureWorks:
 Sustainable Impacts:
 Mentorship Network – Connect users with mentors for guidance and motivation.
+
 Growing Story Hub – Keep collecting and showcasing real success stories.
+
 Resume & Confidence Circles – Host peer-led resume reviews and mock interviews.
+
 Open-Source Expansion – Invite contributors to build and improve features.
+
 Partner with NGOs – Collaborate with women-in-tech and inclusion-focused groups.
+
 Personal Growth Dashboard – Add a tracker for goals, habits, and reflections.
+
 #WhyNotMe Movement – Promote user wins and stories on social media regularly.
 
 ### Contribution Guidelines:
