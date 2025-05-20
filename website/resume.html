@@ -99,7 +99,7 @@
 
   <!-- Experience Modal -->
   <div id="experience-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:2000; align-items:center; justify-content:center;">
-    <div style="background:#fff; padding:2rem; border-radius:12px; width:90%; max-width:1000px; margin:auto; position:relative; box-shadow:0 4px 16px rgba(0,0,0,0.15);">
+    <div style="background:#fff; padding:2rem; border-radius:12px; width:95%; max-width:1200px; margin:auto; position:relative; box-shadow:0 4px 16px rgba(0,0,0,0.15);">
       <h3>Add Experience</h3>
       <div class="form-group">
         <label for="exp-title">Job Title</label>
@@ -121,6 +121,13 @@
         <button type="button" id="cancel-exp">Cancel</button>
         <button type="button" id="save-exp">Save</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Saved Popup -->
+  <div id="exp-saved-popup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.2); z-index:3000; align-items:center; justify-content:center;">
+    <div style="background:#fff; padding:2rem 3rem; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.15); font-size:1.2rem; color:#ba0d6c; font-weight:600; text-align:center;">
+      Saved!
     </div>
   </div>
 
@@ -180,8 +187,28 @@
     document.getElementById('add-experience').onclick = () => { modal.style.display = 'flex'; };
     document.getElementById('cancel-exp').onclick = () => { modal.style.display = 'none'; };
     document.getElementById('save-exp').onclick = () => {
-      // You can add logic here to save the experience entry
-      modal.style.display = 'none';
+      // Save the experience entry
+      const title = document.getElementById('exp-title').value;
+      const company = document.getElementById('exp-company').value;
+      const years = document.getElementById('exp-years').value;
+      const desc = document.getElementById('exp-desc').value;
+      if (title && company && years) {
+        const entry = document.createElement('div');
+        entry.className = 'exp-entry';
+        entry.style.marginBottom = '1rem';
+        entry.innerHTML = `<strong>${title}</strong> at <strong>${company}</strong> (${years})<br><span>${desc}</span>`;
+        document.getElementById('experience-entries').appendChild(entry);
+        // Show saved popup
+        const savedPopup = document.getElementById('exp-saved-popup');
+        savedPopup.style.display = 'flex';
+        setTimeout(() => { savedPopup.style.display = 'none'; }, 2000);
+        // Clear modal fields
+        document.getElementById('exp-title').value = '';
+        document.getElementById('exp-company').value = '';
+        document.getElementById('exp-years').value = '';
+        document.getElementById('exp-desc').value = '';
+        modal.style.display = 'none';
+      }
     };
     modal.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
 

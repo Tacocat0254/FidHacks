@@ -21,8 +21,42 @@
     <section class="feature">
       <h1>Confidence Calculator</h1>
       <p>Discover how much you're really ready — and why you should apply anyway.</p>
+      <blockquote>
+        “Don’t wait for someone to open the door. Kick it down and build your own path.”
+        - Women in Tech Movement
+      </blockquote>
       
-      <div class="calculator-container">
+      
+
+<h1>Confidence Readiness Check for Women in Tech</h1>
+
+  <form id="confidence-form">
+    <p>
+      <label>1. Do you have the basic skills for the job?(Like C++, python,java,etc)</label><br>
+      <input type="radio" name="skills" value="yes"> Yes
+      <input type="radio" name="skills" value="no"> No
+    </p>
+
+    <p>
+      <label>2. Are you continuously learning or taking courses?</label><br>
+      <input type="radio" name="learning" value="yes"> Yes
+      <input type="radio" name="learning" value="no"> No
+    </p>
+
+    <p>
+      <label>3. Do you have support (mentor, peer, or community)?</label><br>
+      <input type="radio" name="support" value="yes"> Yes
+      <input type="radio" name="support" value="no"> No
+    </p>
+
+    <p>
+      <label>4. Do you believe in your potential?</label><br>
+      <input type="radio" name="belief" value="yes"> Yes
+      <input type="radio" name="belief" value="no"> No
+    </p>
+
+  <br>
+  <div clss="calculator-container">
         <form id="confidence-form">
           <div class="form-group">
             <label for="experience">Years of Experience:</label>
@@ -44,8 +78,39 @@
               <option value="phd">PhD</option>
             </select>
           </div>
-          
-          <button type="submit">Calculate Readiness</button>
+
+  <button type="submit">Calculate Confidence </button>
+
+    <!-- Feedback Messages -->
+    <div id="feedback-100" style="display:none;">
+      <p>🎉 You're fully confident and ready to go!</p>
+    </div>
+
+    <div id="feedback-75" style="display:none;">
+      <p>✅ You're almost there — just a little more support or learning!</p>
+    </div>
+
+    <div id="feedback-50" style="display:none;">
+      <p>🌱 You're on your way! Keep learning and believing in yourself.</p>
+    </div>
+
+    <div id="feedback-0" style="display:none;">
+      <p>💡 Start small, find support, and grow — you've got this!</p>
+    </div>
+  </div>
+</form>
+
+<div id="result" class="hidden">
+  <h2>Your Confidence Score</h2>
+  <div class="score-display">
+    <span id="score">0</span>%
+  </div>
+  <p id="feedback"></p>
+
+  <div class="action-buttons">
+    <button id="apply-anyway">🚀 Apply Anyway!</button>
+    <button id="get-help">💡 Get Help & Support</button>
+  </div>
         </form>
         
         <div id="result" class="hidden">
@@ -96,4 +161,5 @@
     };
   </script>
 </body>
-</html> 
+</html>
+ 
