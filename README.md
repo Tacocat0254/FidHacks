@@ -17,11 +17,13 @@ WhyNotMe is a dynamic web platform built to empower students and aspiring profes
 an #WhyNotMe page.
 
 ### Overview:
-To empower women to confidently pursue , prepare for, and  thrive in tech careers.
 
+To empower women to confidently pursue , prepare for, and  thrive in tech careers.
 Increase confidence → job applications → retention
 Build supportive tech community
 Data-driven progress tracking for actual growth
+
+### Architecture:
 
 WhyNotMe/
 
