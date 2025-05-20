@@ -24,6 +24,8 @@ Build supportive tech community
 Data-driven progress tracking for actual growth
 
 WhyNotMe/
+
+
 ├── frontend/
 │   ├── index.html
 │   ├── css/
@@ -40,7 +42,6 @@ WhyNotMe/
 │           └── Hirelens.html
             ├── hiring process.html
             ├── Storyhub.html
-
 ├── README.md
 └── demo-link.txt
 
