@@ -11,7 +11,7 @@
 <p align="center"><em>""Every expert was once a beginner who dared to ask, 'Why not me?'""</em></p>
 
 
-###Introduction:
+### Introduction:
   
 WhyNotMe is a dynamic web platform built to empower students and aspiring professionals — especially those who doubt their place in the world of tech. Whether you're crafting your first resume or navigating the hiring maze, WhyNotMe is the website which includes a launchpad with different resources such as a confidence calculator, Resume Builder, HireLens, Hiring process, Story Hub and
 an #WhyNotMe page.
@@ -44,7 +44,7 @@ WhyNotMe/
 ├── README.md
 └── demo-link.txt
 
-DataFlow
+### DataFlow:
 
 1. User Interacts with Web App (Frontend)
 Tools: HTML + CSS + JavaScript
@@ -120,7 +120,7 @@ Shared success stories
 ### Conclusions:
 The WhyNotMe platform was designed to empower students and aspiring professionals, especially those underrepresented in tech, by providing accessible tools to build confidence and career-readiness. 
 
-###FutureWorks:
+### FutureWorks:
 Sustainable Impacts:
 Mentorship Network – Connect users with mentors for guidance and motivation.
 Growing Story Hub – Keep collecting and showcasing real success stories.
