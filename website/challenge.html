@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>#ApplyAnyway Challenge - LaunchPad</title>
+  <title>#WhyNotMe Challenge - LaunchPad</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -12,14 +12,14 @@
     <a href="index.html">Home</a>
     <a href="calculator.html">Confidence Calculator</a>
     <a href="resume.html">Resume Builder</a>
-    <a href="comparator.html">Comparator</a>
+    <a href="comparator.html">HireLens</a>
     <a href="hiring.html">Hiring Process</a>
     <a href="stories.html">Story Hub</a>
-    <a href="challenge.html">#ApplyAnyway</a>
+    <a href="challenge.html">#WhyNotMe</a>
   </nav>
   <main>
     <section class="feature">
-      <h1>#ApplyAnyway Challenge</h1>
+      <h1>#WhyNotMe Challenge</h1>
       <p>Join the movement of women who are taking action before they feel 100% ready.</p>
 
       <div class="challenge-intro">
@@ -115,7 +115,7 @@
             <textarea id="goal" rows="3" placeholder="Share what you're hoping to achieve..."></textarea>
           </div>
           
-          <button type="submit" class="primary-button" id="join-applyanyway-btn">Join #ApplyAnyway</button>
+          <button type="submit" class="primary-button" id="join-WhyNotMe-btn">Join #WhyNotMe</button>
         </form>
       </div>
     </section>
@@ -126,18 +126,25 @@
 
   <!-- Thank You Popup -->
   <div id="thank-you-popup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.2); z-index:3000; align-items:center; justify-content:center;">
-    <div style="background:#fff; padding:2rem 3rem; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.15); font-size:1.5rem; color:#5a67d8; font-weight:600;">Thank you for joining #ApplyAnyway!</div>
+    <div style="background:#fff; padding:2rem 3rem; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.15); font-size:1.5rem; color:#5a67d8; font-weight:600;">Thank you for joining #WhyNotMe!</div>
   </div>
 
   <script>
-    // Thank you popup logic for Join #ApplyAnyway
-    const joinBtn = document.getElementById('join-applyanyway-btn');
-    const thankYouPopup = document.getElementById('thank-you-popup');
+    // Thank you popup logic for Join #WhyNotMe
+    const joinBtn = document.getElementById('join-WhyNotMe-btn');
     if (joinBtn) {
       joinBtn.onclick = (e) => {
         e.preventDefault();
-        thankYouPopup.style.display = 'flex';
-        setTimeout(() => { thankYouPopup.style.display = 'none'; }, 2000);
+        // Clear the form fields
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('goal').value = '';
+        // Show thank you popup if present
+        const thankYouPopup = document.getElementById('thank-you-popup');
+        if (thankYouPopup) {
+          thankYouPopup.style.display = 'flex';
+          setTimeout(() => { thankYouPopup.style.display = 'none'; }, 2000);
+        }
       };
     }
 
