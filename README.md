@@ -5,7 +5,7 @@
 <p align="center">
 
   
-  <img src="/wnm.png" alt="wnm" width="350" height="250"/>
+  <img src="/wnm.png" alt="wnm" width="350" height="200"/>
 </p>
 
 <p align="center"><em>""Every expert was once a beginner who dared to ask, 'Why not me?'""</em></p>
