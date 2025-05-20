@@ -7,12 +7,13 @@ import { fileURLToPath } from "url"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+const frontendDir = path.join(__dirname,'website')
 
 const app = express()
 const PORT = 3000
 
 app.use(express.json())
-app.use(express.static(__dirname))
+app.use(express.static(frontendDir))
 
 function detectSiteType(url) {
   if (url.includes('amazon.jobs')) return 'amazon'
