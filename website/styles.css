@@ -1,6 +1,7 @@
-/* Common Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Montserrat:wght@400;600;700&display=swap');
+
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
   margin: 0;
   padding: 0;
   background: #ffffff;
@@ -8,8 +9,10 @@ body {
   min-height: 100vh;
 }
 
+
 header {
   background-color: rgb(251, 152, 195);
+  
   color: rgb(255, 255, 255);
   min-height: 100vh;
   display: flex;
@@ -53,26 +56,64 @@ nav {
   right: 0;
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  background-color: #ed5aab;
-  padding: 1rem;
+  align-items: center;
+  gap: 1.2rem;
+  background: rgba(237, 90, 171, 0.85);
+  padding: 0.7rem 2rem;
   z-index: 1000;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(14px) saturate(120%);
+  box-shadow: 0 8px 32px rgba(186, 13, 108, 0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.3s;
 }
 
 nav a {
-  color: white;
+  color: #fff;
   text-decoration: none;
   font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: all 0.2s;
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  background: transparent;
+  transition: 
+    background 0.18s cubic-bezier(.4,0,.2,1),
+    color 0.18s cubic-bezier(.4,0,.2,1),
+    box-shadow 0.18s cubic-bezier(.4,0,.2,1),
+    transform 0.18s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 2px 8px rgba(186, 13, 108, 0.04);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
-nav a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
+nav a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: width 0.2s, left 0.2s;
+}
+
+nav a:hover::after,
+nav a:focus::after {
+  width: 60%;
+  left: 20%;
+}
+
+nav a:hover, nav a:focus {
+  background: rgba(255,255,255,0.18);
+  color: #ba0d6c;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(186, 13, 108, 0.10);
+  outline: none;
 }
 
 main {
@@ -101,6 +142,11 @@ footer {
 .calculator-container {
   max-width: 600px;
   margin: 2rem auto;
+  background: #f8fafc;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(186, 13, 108, 0.06);
+  padding: 2.5rem 2rem;
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
 }
 
 .form-group {
@@ -110,31 +156,58 @@ footer {
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  font-weight: 600;
+  font-weight: 700;
+  color: #ba0d6c;
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+  letter-spacing: 0.01em;
 }
 
 .form-group input,
 .form-group select {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #e0b8d0;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+  background: #fff;
+  transition: border-color 0.2s;
+  outline: none;
+  box-sizing: border-box;
 }
 
-button {
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #ba0d6c;
+  background: #fdf6fa;
+}
+
+button,
+.primary-button {
   background-color: #ba0d6c;
   color: white;
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  font-weight: 600;
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1.08rem;
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: 
+    background 0.18s cubic-bezier(.4,0,.2,1),
+    color 0.18s cubic-bezier(.4,0,.2,1),
+    box-shadow 0.18s cubic-bezier(.4,0,.2,1),
+    transform 0.18s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 2px 8px rgba(186, 13, 108, 0.04);
+  outline: none;
 }
 
-button:hover {
-  background-color: #ba0d6c;
+button:hover,
+.primary-button:hover {
+  background-color: #ed5aab;
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 16px rgba(186, 13, 108, 0.10);
 }
 
 .score-display {
@@ -143,44 +216,93 @@ button:hover {
   color: #ba0d6c;
   text-align: center;
   margin: 2rem 0;
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+  letter-spacing: 0.01em;
 }
 
 .hidden {
   display: none;
 }
 
-/* Resume Builder Styles */
-.resume-builder {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 2rem;
+#confidence-form p {
+  margin-bottom: 1.5rem;
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+  text-align: left;
 }
 
-.template-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+#confidence-form label {
+  display: block;
+  font-weight: 600;
+  color: #ba0d6c;
+  margin-bottom: 0.5rem;
+  font-size: 1.08rem;
+  letter-spacing: 0.01em;
+  text-align: left;
 }
 
-.template-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1rem;
+#confidence-form input[type="radio"] {
+  accent-color: #ba0d6c;
+  margin-right: 0.4em;
+  margin-left: 0.8em;
+  transform: scale(1.15);
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+section.feature {
+  background: linear-gradient(120deg, #fff0f8 0%, #f8fafc 100%);
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(186, 13, 108, 0.07);
+  padding: 3rem 2rem 2.5rem 2rem;
+  max-width: 700px;
+  margin: 3rem auto 2rem auto;
   text-align: center;
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
 }
 
-.template-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-  margin-bottom: 1rem;
+section.feature h1 {
+  font-size: 2.7rem;
+  font-weight: 800;
+  color: #ba0d6c;
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.01em;
+  background: linear-gradient(90deg, #ba0d6c 40%, #ed5aab 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
 }
 
-.form-section {
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background: #f8fafc;
+section.feature p {
+  font-size: 1.18rem;
+  color: #6d2c5b;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+section.feature blockquote {
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #ed5aab;
+  background: #fff6fa;
+  border-left: 4px solid #ba0d6c;
+  margin: 0 auto 2rem auto;
+  padding: 1.1rem 1.5rem 1.1rem 1.2rem;
   border-radius: 8px;
+  max-width: 520px;
+  box-shadow: 0 2px 12px rgba(186, 13, 108, 0.04);
+
+}
+
+h1.confidence {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #6d2c5b;
+  margin-top: 2.2rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.01em;
 }
 
 /* Hiring Process Styles */
@@ -219,15 +341,26 @@ button:hover {
 }
 
 .timeline-item ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-top: 1rem;
   padding-left: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  
 }
 
+
+
 .resource-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  justify-content: center;
   gap: 1.5rem;
   margin-top: 2rem;
+  flex-wrap: wrap;
+
 }
 
 .resource-card {
@@ -235,6 +368,8 @@ button:hover {
   padding: 1.5rem;
   border-radius: 8px;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Stories Page Styles */
@@ -563,3 +698,193 @@ button:hover {
 .centered-form p {
   text-align: center;
 } 
+
+/* Resume Builder */
+/* Resume Builder Modern Styles */
+
+.resume-builder {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+
+  align-items: flex-start;
+}
+
+.resume-templates {
+  background: #fff6fa;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(186, 13, 108, 0.04);
+  padding: 2rem 1.2rem;
+}
+
+.resume-templates h2 {
+  font-size: 1.25rem;
+  color: #ba0d6c;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.template-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+.template-card {
+  background: #fff;
+  border: 1.5px solid #e0b8d0;
+  border-radius: 10px;
+  padding: 1.2rem 1rem 1.5rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(186, 13, 108, 0.03);
+  transition: box-shadow 0.18s, border-color 0.18s;
+}
+
+.template-card:hover {
+  border-color: #ba0d6c;
+  box-shadow: 0 4px 16px rgba(186, 13, 108, 0.08);
+}
+
+.template-card img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(186, 13, 108, 0.04);
+}
+
+.template-card button {
+  background: #ba0d6c;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+  box-shadow: 0 2px 8px rgba(186, 13, 108, 0.04);
+}
+
+.template-card button:hover {
+  background: #ed5aab;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(186, 13, 108, 0.10);
+}
+
+.resume-editor {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(186, 13, 108, 0.04);
+  padding: 2.5rem 2rem;
+}
+
+#resume-form {
+  width: 100%;
+}
+
+.form-section {
+  margin-bottom: 2.2rem;
+  padding: 1.5rem 1.2rem;
+  background: #f8fafc;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(186, 13, 108, 0.03);
+}
+
+.form-section h3 {
+  color: #ba0d6c;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #6d2c5b;
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #e0b8d0;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+  background: #fff;
+  transition: border-color 0.2s;
+  outline: none;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #ba0d6c;
+  background: #fdf6fa;
+}
+
+.primary-button,
+#resume-form button[type="submit"] {
+  background-color: #ba0d6c;
+  color: white;
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+  cursor: pointer;
+  transition: 
+    background 0.18s cubic-bezier(.4,0,.2,1),
+    color 0.18s cubic-bezier(.4,0,.2,1),
+    box-shadow 0.18s cubic-bezier(.4,0,.2,1),
+    transform 0.18s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 2px 8px rgba(186, 13, 108, 0.04);
+  outline: none;
+  margin-top: 1.2rem;
+}
+
+.primary-button:hover,
+#resume-form button[type="submit"]:hover {
+  background-color: #ed5aab;
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 16px rgba(186, 13, 108, 0.10);
+}
+
+#selected-template {
+  margin: 1.5rem 0;
+  font-size: 1.0rem;
+  font-weight: 600;
+  color: #ba0d6c;
+  text-align: center;
+}
+
+.exp-entry,
+.edu-entry {
+  background: #fff6fa;
+  border-radius: 7px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.7rem;
+  box-shadow: 0 1px 4px rgba(186, 13, 108, 0.03);
+  font-size: 1rem;
+  color: #6d2c5b;
+}
+
+

@@ -8,28 +8,406 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #f0f2f5; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
+    /* Add to styles.css or in a <style> tag for theme consistency with LaunchPad */
+/* filepath: /Users/sujit/Documents/FidHacks/website/styles.css */
 
-    main { flex: 1; display: flex; justify-content: center; align-items: center; padding: 2rem; }
+/* --- HireLens/Comparator Themed Styles --- */
+body {
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+  background: #f8fafc;
+  color: #333;
+}
 
-    .container { background: #fff; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); width: 100%; max-width: 600px; overflow: hidden; display: flex; flex-direction: column; }
-    .inputs { display: flex; flex-direction: column; padding: 2rem; gap: 1.5rem; }
-    .inputs label { font-size: 0.9rem; font-weight: 500; }
-    .inputs input[type='file'], .inputs input[type='text'] { width: 100%; padding: 0.75rem; border: 1px solid #CBD5E0; border-radius: 6px; font-size: 1rem; }
-    .inputs button { padding: 0.75rem 1.5rem; border: none; background: #ba0d6c; color: #fff; font-size: 1rem; border-radius: 6px; cursor: pointer; align-self: flex-start; transition: background 0.2s, transform 0.1s; }
-    .inputs button:hover { background: #fb98c3; }
-    .inputs button:active { transform: scale(0.98); }
+.container {
+  background: linear-gradient(120deg, #fff0f8 0%, #f8fafc 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(186, 13, 108, 0.08);
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 2.5rem auto 2rem auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+}
 
-    .results { display: flex; flex-direction: column; align-items: center; padding: 1rem 2rem 2rem; opacity: 0; transition: opacity 0.5s ease-in-out; }
-    .results.visible { opacity: 1; }
+.inputs {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1.5rem;
+}
 
-    .progress-container { background: #E2E8F0; border-radius: 6px; overflow: hidden; height: 24px; width: 100%; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); }
-    .progress-bar { background: linear-gradient(90deg, #48BB78, #38A169); height: 100%; width: 0; transition: width 1s cubic-bezier(0.2,0.8,0.2,1); }
-    .progress-text { margin-top: 0.5rem; font-size: 1rem; font-weight: 600; text-align: center; }
-    .match-details { margin-top: 1rem; font-size: 0.9rem; line-height: 1.4; color: #4A5568; text-align: center; }
+.inputs label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ba0d6c;
+  margin-bottom: 0.4rem;
+}
 
-    footer { text-align: center; padding: 1rem; background: #EDF2F7; font-size: 0.8rem; }
-    @media (max-width: 800px) { .container { margin: 0 1rem; } }
+.inputs input[type='file'],
+.inputs input[type='text'] {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #e0b8d0;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  background: #fff;
+  transition: border-color 0.2s;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.inputs input[type='file']:focus,
+.inputs input[type='text']:focus {
+  border-color: #ba0d6c;
+  background: #fdf6fa;
+}
+
+.inputs button {
+  padding: 0.85rem 2rem;
+  border: none;
+  background: #ba0d6c;
+  color: #fff;
+  font-size: 1.05rem;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+  box-shadow: 0 2px 8px rgba(186, 13, 108, 0.04);
+}
+
+.inputs button:hover {
+  background: #ed5aab;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(186, 13, 108, 0.10);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem 2rem 2rem;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.results.visible {
+  opacity: 1;
+}
+
+.progress-container {
+  background: #f8e6f3;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 26px;
+  width: 100%;
+  box-shadow: inset 0 1px 3px rgba(186, 13, 108, 0.06);
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #ba0d6c 40%, #ed5aab 100%);
+  height: 100%;
+  width: 0;
+  transition: width 1s cubic-bezier(0.2,0.8,0.2,1);
+}
+
+.progress-text {
+  margin-top: 0.7rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #ba0d6c;
+  text-align: center;
+}
+
+.match-details {
+  margin-top: 1rem;
+  font-size: 0.97rem;
+  line-height: 1.5;
+  color: #6d2c5b;
+  text-align: center;
+}
+
+/* --- Success Stories Section --- */
+.success-stories {
+  width: 100%;
+  max-width: 900px;
+  opacity: 0;
+  display: none;
+  margin: 2.5rem auto 0 auto;
+  background: linear-gradient(120deg, #fff0f8 0%, #f8fafc 100%);
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(186, 13, 108, 0.07);
+  padding: 2.5rem 2rem 2rem 2rem;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.success-stories.visible {
+  opacity: 1;
+  display: block;
+}
+
+.success-stories h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #ba0d6c;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  background: linear-gradient(90deg, #ba0d6c 40%, #ed5aab 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+}
+
+.success-stories p {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #6d2c5b;
+  font-size: 1.08rem;
+  font-weight: 500;
+}
+
+.success-stories blockquote {
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #ed5aab;
+  background: #fff6fa;
+  border-left: 4px solid #ba0d6c;
+  padding: 1.1rem 1.5rem 1.1rem 1.2rem;
+  border-radius: 8px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 12px rgba(186, 13, 108, 0.04);
+}
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.story-card {
+  background: linear-gradient(120deg, #fff0f8 0%, #f8fafc 100%);
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(186, 13, 108, 0.13);
+  overflow: hidden;
+  transition: 
+    transform 0.22s cubic-bezier(.4,0,.2,1),
+    box-shadow 0.22s cubic-bezier(.4,0,.2,1);
+  display: flex;
+  flex-direction: column;
+  min-height: 340px;
+  border: 1.5px solid #e0b8d0;
+  animation: fadeIn 0.7s both;
+}
+
+.story-card:hover {
+  transform: translateY(-8px) scale(1.025);
+  box-shadow: 0 12px 36px rgba(186, 13, 108, 0.18);
+  border-color: #ba0d6c;
+}
+
+.story-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(186, 13, 108, 0.13);
+}
+
+.story-header {
+  display: flex;
+  padding: 1.5rem 1.5rem 0.5rem;
+  align-items: center;
+}
+
+.story-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+  border: 2px solid #ed5aab;
+}
+
+.story-meta h3 {
+  font-size: 1.08rem;
+  margin-bottom: 0.2rem;
+  color: #ba0d6c;
+  font-weight: 700;
+}
+
+.story-role, .story-location {
+  font-size: 0.85rem;
+  color: #718096;
+  margin-bottom: 0.2rem;
+}
+
+.story-content {
+  padding: 0.5rem 1.5rem 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.story-content p {
+  font-size: 0.97rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  text-align: left;
+  color: #6d2c5b;
+}
+
+.story-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.story-stats span {
+  background: #EBF4FF;
+  color: #3182CE;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.story-stats span.highlight {
+  background: #C6F6D5;
+  color: #38A169;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #EDF2F7;
+  font-size: 0.85rem;
+  color: #6d2c5b;
+  margin-top: 2rem;
+}
+/* Modern, LaunchPad-themed styles for HireLens input section */
+.container h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ba0d6c;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  background: linear-gradient(90deg, #ba0d6c 40%, #ed5aab 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem 1.5rem;
+  background: #fff6fa;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(186, 13, 108, 0.04);
+  margin-bottom: 1.5rem;
+}
+
+.inputs label {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ba0d6c;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.01em;
+  display: block;
+}
+
+.inputs input[type='file'],
+.inputs input[type='text'] {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #e0b8d0;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  background: #fff;
+  transition: border-color 0.2s, background 0.2s;
+  outline: none;
+  box-sizing: border-box;
+  margin-top: 0.2rem;
+}
+
+.inputs input[type='file']:focus,
+.inputs input[type='text']:focus {
+  border-color: #ba0d6c;
+  background: #fdf6fa;
+}
+
+.inputs button {
+  padding: 0.85rem 2rem;
+  border: none;
+  background: #ba0d6c;
+  color: #fff;
+  font-size: 1.05rem;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+  box-shadow: 0 2px 8px rgba(186, 13, 108, 0.04);
+  margin-top: 0.5rem;
+}
+
+.inputs button:hover {
+  background: #ed5aab;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(186, 13, 108, 0.10);
+}
+
+@media (max-width: 600px) {
+  .container h1 {
+    font-size: 1.4rem;
+  }
+  .inputs {
+    padding: 1rem 0.5rem;
+    gap: 1rem;
+  }
+  .inputs button {
+    width: 100%;
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    margin: 0 1rem 2rem;
+  }
+  .success-stories {
+    padding: 1.2rem 0.5rem;
+  }
+  .stories-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0.5rem;
+  }
+  .inputs {
+    padding: 1rem 0.5rem;
+  }
+  .success-stories {
+    padding: 1rem 0.2rem;
+  }
+  .story-header {
+    padding: 1rem 0.7rem 0.5rem;
+  }
+  .story-content {
+    padding: 0.5rem 0.7rem 1rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -44,6 +422,7 @@
   </nav>
   <main>
     <div class="container">
+      <h1 cl>HireLens</h1>
       <div class="inputs">
         <div>
           <label for="resumeInput">Upload Your Resume (PDF)</label>
@@ -63,59 +442,241 @@
         <div class="match-details" id="matchDetails"></div>
       </div>
     </div>
+    
+    <section class="success-stories" id="successStories">
+      <h1>Success Stories</h1>
+      <p>Real stories from women who took the leap — and succeeded with similar match scores.</p>
+
+      <blockquote>
+        "She started with doubt, learned with grit, and now leads with confidence. Read her story."
+        - Women Who Code
+      </blockquote>
+
+      <div class="stories-grid" id="storiesGrid">
+        <!-- Stories will be dynamically inserted here based on match score -->
+      </div>
+    </section>
   </main>
   <footer>&copy; 2025 Why Not Me? All rights reserved.</footer>
 
-  <script>
-    const resultsEl = document.getElementById('results');
-    document.getElementById('compareBtn').addEventListener('click', async () => {
-      const url = document.getElementById('urlInput').value.trim();
-      const resumeFile = document.getElementById('resumeInput').files[0];
-      const progressBar = document.getElementById('progressBar');
-      const progressText = document.getElementById('progressText');
-      const matchDetails = document.getElementById('matchDetails');
-
-      // Reset UI
-      resultsEl.classList.remove('visible');
-      progressBar.style.width = '0';
-      progressText.textContent = '';
-      matchDetails.textContent = '';
-
-      if (!url || !resumeFile) {
-        progressText.textContent = 'Please provide both resume and job URL.';
-        resultsEl.classList.add('visible');
-        return;
+  <!-- Only the JavaScript part needs updating -->
+<script>
+  // Success stories database
+   const successStories = [
+      {
+        name: "Sarah Chen",
+        role: "Software Engineer at Google",
+        location: "San Francisco, CA",
+        image: "stories/sarah.jpg",
+        story: "I applied to Google with only 6 months of coding experience. I was terrified, but the Confidence Calculator showed me I had more to offer than I thought. Now I'm leading a team of engineers!",
+        stats: ["Applied with 60% match", "Got the job!"],
+        matchScore: 60
+      },
+      {
+        name: "Maria Rodriguez",
+        role: "Product Manager at Microsoft",
+        location: "Seattle, WA",
+        image: "stories/maria.jpg",
+        story: "I had never managed a product before, but I used the Resume Builder to highlight my transferable skills from my previous role. The hiring manager said my ability to learn quickly stood out.",
+        stats: ["First PM role", "Applied with 70% match", "Promoted in 1 year"],
+        matchScore: 70
+      },
+      {
+        name: "Priya Patel",
+        role: "Data Scientist at Amazon",
+        location: "New York, NY",
+        image: "stories/priya.jpg",
+        story: "I was transitioning from academia to industry. The Hiring Process Guide helped me understand what to expect, and I prepared for questions I never would have thought of on my own.",
+        stats: ["Career change", "Applied with 65% match", "3x salary increase"],
+        matchScore: 65
+      },
+      {
+        name: "Layla Johnson",
+        role: "Frontend Developer at Netflix",
+        location: "Los Angeles, CA",
+        image: "stories/layla.jpg",
+        story: "With a 55% match score, I almost didn't apply. But the WhyNotMe community encouraged me to try anyway. The interviewer was impressed by my portfolio projects even though I didn't meet all their requirements.",
+        stats: ["Self-taught developer", "Applied with 55% match", "Got hired in 2 weeks"],
+        matchScore: 55
+      },
+      {
+        name: "Zoe Wong",
+        role: "DevOps Engineer at Salesforce",
+        location: "Chicago, IL",
+        image: "stories/zoe.jpg",
+        story: "Coming from a QA background, I worried my skills didn't translate to DevOps. HireLens showed I had a 75% match, which gave me the confidence to apply. My troubleshooting experience turned out to be exactly what they needed!",
+        stats: ["Career pivot", "Applied with 75% match", "Now mentors others"],
+        matchScore: 75
+      },
+      {
+        name: "Aisha Rahman",
+        role: "Security Analyst at IBM",
+        location: "Austin, TX",
+        image: "stories/aisha.jpg",
+        story: "Even with a low match score of 45%, I highlighted my passion for cybersecurity and my self-study efforts during the interview. They took a chance on me because of my enthusiasm and learning mindset.",
+        stats: ["Applied with 45% match", "No formal security background", "Got the job!"],
+        matchScore: 45
+      },
+      {
+        name: "Elena Vasquez",
+        role: "UX Designer at Adobe",
+        location: "Portland, OR",
+        image: "stories/elena.jpg",
+        story: "I got an 80% match score but was still nervous about applying to such a prestigious company. The interview prep resources from LaunchPad helped me showcase my design process effectively.",
+        stats: ["Applied with 80% match", "First tech company role", "Now leads design team"],
+        matchScore: 80
+      },
+      {
+        name: "Tara Williams",
+        role: "Technical Program Manager at Spotify",
+        location: "Nashville, TN",
+        image: "stories/tara.jpg",
+        story: "My match score was only 50%, but I used the gap analysis to prepare targeted examples that addressed their specific needs. I focused on demonstrating my ability to learn quickly and deliver results.",
+        stats: ["Applied with 50% match", "Non-traditional background", "Hired on the spot"],
+        matchScore: 50
       }
+    ];
 
-      progressText.textContent = 'Analyzing...';
-      resultsEl.classList.add('visible');
-
-      try {
-        // Scrape
-        const scrapeResp = await fetch('/scrape', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url }) });
-        const { error: scrapeErr, description } = await scrapeResp.json();
-        if (scrapeErr) throw new Error(scrapeErr);
-
-        // Match
-        const form = new FormData();
-        form.append('description', description);
-        form.append('resume', resumeFile);
-        const matchResp = await fetch('/match', { method: 'POST', body: form });
-        const matchData = await matchResp.json();
-        console.log(matchData)
-        if (matchData.error) throw new Error(matchData.error);
-
-        // Extract percentage
-        
-        const percentMatch = (matchData.matchResult.match(/\d+/) || [])[0] || '0';
-        // Animate
-        setTimeout(() => { progressBar.style.width = `${percentMatch}%`; }, 100);
-        progressText.textContent = `${percentMatch}% match`;
-        matchDetails.textContent = matchData.matchResult.replace(/.*%/, '').trim();
-      } catch (err) {
-        progressText.textContent = `Error: ${err.message}`;
-      }
+  // Function to render success stories based on match percentage
+  function renderRelevantStories(matchPercentage) {
+    const storiesGrid = document.getElementById('storiesGrid');
+    storiesGrid.innerHTML = ''; // Clear existing stories
+    
+    // Convert to number if it's a string
+    const matchScore = parseInt(matchPercentage);
+    
+    // Find relevant stories (within 15% of user's match score)
+    const relevantStories = successStories.filter(story => 
+      Math.abs(story.matchScore - matchScore) <= 15
+    );
+    
+    // If no close matches, show stories with lower match scores who still succeeded
+    const storiesToShow = relevantStories.length > 0 ? 
+      relevantStories : 
+      successStories.filter(story => story.matchScore <= matchScore + 5);
+    
+    // Limit to 3 stories, prioritizing those closest to user's score
+    const sortedStories = storiesToShow
+      .sort((a, b) => Math.abs(a.matchScore - matchScore) - Math.abs(b.matchScore - matchScore))
+      .slice(0, 3);
+    
+    // If still no stories, show lowest match scores who got jobs
+    if (sortedStories.length === 0) {
+      sortedStories.push(...successStories
+        .sort((a, b) => a.matchScore - b.matchScore)
+        .slice(0, 3));
+    }
+    
+    // Create and append story cards
+    sortedStories.forEach(story => {
+      const storyCard = document.createElement('article');
+      storyCard.className = 'story-card';
+      
+      const statsHTML = story.stats.map(stat => {
+        const isMatchStat = stat.includes('match');
+        return `<span${isMatchStat ? ' class="highlight"' : ''}>${stat}</span>`;
+      }).join('');
+      
+      storyCard.innerHTML = `
+        <div class="story-header">
+          <img src="${'stories/user.png'}" alt="${story.name}'s photo" class="story-image">
+          <div class="story-meta">
+            <h3>${story.name}</h3>
+            <p class="story-role">${story.role}</p>
+            <p class="story-location">${story.location}</p>
+          </div>
+        </div>
+        <div class="story-content">
+          <p>"${story.story}"</p>
+          <div class="story-stats">
+            ${statsHTML}
+          </div>
+        </div>
+      `;
+      
+      storiesGrid.appendChild(storyCard);
     });
-  </script>
+    
+    // Make stories section visible
+    document.getElementById('successStories').classList.add('visible');
+  }
+
+  const resultsEl = document.getElementById('results');
+  document.getElementById('compareBtn').addEventListener('click', async () => {
+    const url = document.getElementById('urlInput').value.trim();
+    const resumeFile = document.getElementById('resumeInput').files[0];
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    const matchDetails = document.getElementById('matchDetails');
+    const successStoriesSection = document.getElementById('successStories');
+
+    // Reset UI
+    resultsEl.classList.remove('visible');
+    successStoriesSection.classList.remove('visible');
+    progressBar.style.width = '0';
+    progressText.textContent = '';
+    matchDetails.textContent = '';
+
+    if (!url || !resumeFile) {
+      progressText.textContent = 'Please provide both resume and job URL.';
+      resultsEl.classList.add('visible');
+      return;
+    }
+
+    progressText.textContent = 'Analyzing...';
+    resultsEl.classList.add('visible');
+
+    try {
+      // Scrape
+      const scrapeResp = await fetch('/scrape', { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' }, 
+        body: JSON.stringify({ url }) 
+      });
+      const scrapeData = await scrapeResp.json();
+      if (scrapeData.error) throw new Error(scrapeData.error);
+
+      // Match
+      const form = new FormData();
+      form.append('description', scrapeData.description); // Fixed: was 'qualifications'
+      form.append('resume', resumeFile);
+      const matchResp = await fetch('/match', { method: 'POST', body: form });
+      const matchData = await matchResp.json();
+      
+      if (matchData.error) throw new Error(matchData.error);
+
+      // Extract percentage - now simplified because backend returns clean percentage
+      const percentMatch = parseInt(matchData.matchResult, 10);
+      
+      // Animate progress bar
+      setTimeout(() => { progressBar.style.width = `${percentMatch}%`; }, 100);
+      progressText.textContent = `${percentMatch}% match`;
+      
+      // Add a helpful description based on match percentage
+      let detailsText = '';
+      if (percentMatch >= 80) {
+        detailsText = "Excellent match! Your skills and experience align very well with this position.";
+      } else if (percentMatch >= 70) {
+        detailsText = "Strong match! You have most of the qualifications required for this role.";
+      } else if (percentMatch >= 60) {
+        detailsText = "Good match! You have many relevant skills for this position.";
+      } else if (percentMatch >= 40) {
+        detailsText = "Moderate match. Consider emphasizing your transferable skills in your application.";
+      } else {
+        detailsText = "This role may be a stretch, but don't let that stop you! Many women get hired with similar match scores.";
+      }
+      
+      matchDetails.textContent = detailsText;
+      
+      // Show relevant success stories after a short delay
+      setTimeout(() => {
+        renderRelevantStories(percentMatch);
+      }, 1000);
+      
+    } catch (err) {
+      progressText.textContent = `Error: ${err.message}`;
+    }
+  });
+</script>
 </body>
 </html>

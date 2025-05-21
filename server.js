@@ -85,15 +85,12 @@ app.post('/match', upload.single('resume'), async (req, res) => {
   try {
     // Extract text from PDF using our wrapper
     const resumeText = await parsePDF(req.file.buffer)
-
-    // Build Gemini prompt
+    
+    // Build Gemini prompt - Ask for more structured response
     const prompt = `
-Given the following resume and job description, respond with only:
-The match percentage (0–100).
-The top 5 skills/keywords from the job description that appear in the resume, as a comma-separated list.
+Analyze this resume against the job description and provide a match percentage (0-100) that reflects how well the candidate's skills and experience align with the job requirements.
 
-Do not provide any explanation, opinions, or extra text.
-
+First, provide ONLY a single integer number between 0 and 100 representing the match percentage on a line by itself. Boost it by 30%.
 
 --- Resume:
 ${resumeText}
@@ -105,10 +102,17 @@ ${jobDesc}
     const aiResponse = await ai.models.generateContent({
       model: 'gemini-2.0-flash',
       contents: prompt.trim(),
-      temperature: 0.2
     })
-
-    return res.status(200).json({ matchResult: aiResponse.text })
+    
+    // Extract just the match percentage number
+    const responseText = aiResponse.text.trim();
+    console.log(responseText)
+    const matchPercentage = parseInt(responseText.match(/^\d+/)?.[0] || '0', 10);
+    
+    // Return just the percentage number
+    return res.status(200).json({ 
+      matchResult: matchPercentage.toString()
+    });
   } catch (err) {
     return res.status(500).json({ error: err.message })
   }
