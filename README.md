@@ -58,7 +58,7 @@ Personal Growth Dashboard – Add a tracker for goals, habits, and reflections.
 
 ### How To Run
 
-1. **Clone the repo locally:**
+1. **Clone the repository locally:**
    ```sh
    git clone https://github.com/Tacocat0254/FidHacks.git
    cd FidHacks
@@ -69,12 +69,17 @@ Personal Growth Dashboard – Add a tracker for goals, habits, and reflections.
    npm install
    ```
 
-3. **Start the server:**
+3. **Create a `.env` file in the project root and add your Gemini API key:**
+   ```
+   GEMINI_API_KEY=your-gemini-api-key-here
+   ```
+
+4. **Start the server:**
    ```sh
    node server.js
    ```
 
-4. **Open your browser and visit:**  
+5. **Open your browser and visit:**  
    [http://localhost:3000](http://localhost:3000) (or the port shown in your terminal)
 
 ---
