@@ -52,10 +52,32 @@ Personal Growth Dashboard – Add a tracker for goals, habits, and reflections.
 #WhyNotMe Movement – Promote user wins and stories on social media regularly.
 
 ### Contribution Guidelines:
-- HTML
-- CSS
-- JavaScript
-- Gemini.AI
+- HTML/CSS
+- NodeJS, Express, Multer
+- Gemini
+
+### How To Run
+
+1. **Clone the repo locally:**
+   ```sh
+   git clone https://github.com/Tacocat0254/FidHacks.git
+   cd FidHacks
+   ```
+
+2. **Install all dependencies:**
+   ```sh
+   npm install
+   ```
+
+3. **Start the server:**
+   ```sh
+   node server.js
+   ```
+
+4. **Open your browser and visit:**  
+   [http://localhost:3000](http://localhost:3000) (or the port shown in your terminal)
+
+---
 
 
   License © 2025 Why Not Me? 
